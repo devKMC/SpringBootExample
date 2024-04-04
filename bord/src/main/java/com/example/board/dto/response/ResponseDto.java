@@ -11,11 +11,51 @@ import lombok.Getter;
 public class ResponseDto {
     private String code;
     private String message;
+
+
+    // private duplicateEmail
+
+    // private duplicateNickName
+
+    // private duplicateTelNumber
+
+    // duplicateAdress 
+
+
+    public static ResponseEntity<ResponseDto> success(){
+        ResponseDto body = new ResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
+        return ResponseEntity.status(HttpStatus.OK).body(body);
+    }
     
     public static ResponseEntity<ResponseDto> databaseError() {
         ResponseDto body = new ResponseDto(ResponseCode.DATABASE_ERROR, ResponseMessage.DATABASE_ERROR);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
+
+    public static ResponseEntity<ResponseDto> ValidationEmail() {
+        ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.VALIDATION_FAIL);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    public static ResponseEntity<ResponseDto> duplicateEmail() {
+        ResponseDto body = new ResponseDto(ResponseCode.DUPLICATE_EMAIL, ResponseMessage.DUPLICATE_EMAIL);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    public static ResponseEntity<ResponseDto> duplicateNickname() {
+        ResponseDto body = new ResponseDto(ResponseCode.DUPLICATE_NICKNAME, ResponseMessage.DUPLICATE_NICKNAME);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    public static ResponseEntity<ResponseDto> duplicateTelNumber() {
+        ResponseDto body = new ResponseDto(ResponseCode.DUPLICATE_TEL_NUMBER, ResponseMessage.DUPLICATE_TEL_NUMBER);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    public static ResponseEntity<ResponseDto> validationFail() {
+        ResponseDto body = new ResponseDto(ResponseCode.VALIDATION_FAIL, ResponseMessage.VALIDATION_FAIL);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
 
     public static ResponseEntity<ResponseDto> notExistUser() {
         ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER);
