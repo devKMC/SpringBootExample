@@ -10,9 +10,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
+
+// * 엔티티에서 넘어와서 데이터 전달 하기 위해 SignUpRequest Dto를 작성
+
+// 만약 getter를 생성하지 않으면 생성자를 만들어서 따로 호출해야 함
+// SignUpRequestDto dto = new SignUpRequestDto();
+// String email = dto.getEmail(); // 직접 getter 메서드 호출
+
+@Getter 
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor // 생성자를 자동으로 생성해주는 어노테이션
 public class SignUpRequestDto {
 
         //API 명세서를 보고 작업 (SignUp Request)
@@ -37,3 +44,5 @@ public class SignUpRequestDto {
 
         private String addressDetail;
 }
+
+// * 그런다음 엔티티에서 생성자를 만들어서 호출함
