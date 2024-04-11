@@ -22,9 +22,16 @@ public class AuthController {
     
     @PostMapping("/sign-up")
     public ResponseEntity<ResponseDto> signUp(
+
+    // 요청 본문으로부터 데이터를 SignUpRequestDto 객체로 매핑하고 유효성을 검사합니다.
         @RequestBody @Valid SignUpRequestDto requestBody
     ) {
+    
+        // authService의 signUp 메서드를 호출하여 회원가입을 처리하고,
+        // 그 결과를 ResponseEntity<ResponseDto> 형태로 받습니다.
         ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
+
+        // 회원가입 처리 결과를 클라이언트에게 반환합니다.
         return response;
     }
 }
